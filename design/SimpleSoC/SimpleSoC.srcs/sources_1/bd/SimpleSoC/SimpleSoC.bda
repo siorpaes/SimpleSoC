@@ -21,38 +21,6 @@
   <key attr.name="vert_type" attr.type="string" for="node" id="VT"/>
   <graph edgedefault="undirected" id="G" parse.edgeids="canonical" parse.nodeids="canonical" parse.order="nodesfirst">
     <node id="n0">
-      <data key="TU">active</data>
-      <data key="VH">2</data>
-      <data key="VT">PM</data>
-    </node>
-    <node id="n1">
-      <data key="VH">2</data>
-      <data key="VM">SimpleSoC</data>
-      <data key="VT">VR</data>
-    </node>
-    <node id="n2">
-      <data key="BA">0x40000000</data>
-      <data key="BP">C_BASEADDR</data>
-      <data key="HA">0x4000FFFF</data>
-      <data key="HP">C_HIGHADDR</data>
-      <data key="MA">CM1_AXI3</data>
-      <data key="MX">/CORTEXM1_AXI_0</data>
-      <data key="MI">CM1_AXI3</data>
-      <data key="MS">SEG_axi_gpio_0_Reg</data>
-      <data key="MV">arm.com:CortexM:CORTEXM1_AXI:1.1</data>
-      <data key="TM">both</data>
-      <data key="SX">/axi_gpio_0</data>
-      <data key="SI">S_AXI</data>
-      <data key="SS">Reg</data>
-      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
-      <data key="TU">register</data>
-      <data key="VT">AC</data>
-    </node>
-    <node id="n3">
-      <data key="VM">SimpleSoC</data>
-      <data key="VT">BC</data>
-    </node>
-    <node id="n4">
       <data key="BA">0x00000000</data>
       <data key="BP">C_S_AXI_BASEADDR</data>
       <data key="HA">0x00001FFF</data>
@@ -70,14 +38,46 @@
       <data key="TU">memory</data>
       <data key="VT">AC</data>
     </node>
-    <edge id="e0" source="n3" target="n1">
+    <node id="n1">
+      <data key="TU">active</data>
+      <data key="VH">2</data>
+      <data key="VT">PM</data>
+    </node>
+    <node id="n2">
+      <data key="VM">SimpleSoC</data>
+      <data key="VT">BC</data>
+    </node>
+    <node id="n3">
+      <data key="BA">0x40000000</data>
+      <data key="BP">C_BASEADDR</data>
+      <data key="HA">0x4000FFFF</data>
+      <data key="HP">C_HIGHADDR</data>
+      <data key="MA">CM1_AXI3</data>
+      <data key="MX">/CORTEXM1_AXI_0</data>
+      <data key="MI">CM1_AXI3</data>
+      <data key="MS">SEG_axi_gpio_0_Reg</data>
+      <data key="MV">arm.com:CortexM:CORTEXM1_AXI:1.1</data>
+      <data key="TM">both</data>
+      <data key="SX">/axi_gpio_0</data>
+      <data key="SI">S_AXI</data>
+      <data key="SS">Reg</data>
+      <data key="SV">xilinx.com:ip:axi_gpio:2.0</data>
+      <data key="TU">register</data>
+      <data key="VT">AC</data>
+    </node>
+    <node id="n4">
+      <data key="VH">2</data>
+      <data key="VM">SimpleSoC</data>
+      <data key="VT">VR</data>
+    </node>
+    <edge id="e0" source="n2" target="n4">
     </edge>
-    <edge id="e1" source="n1" target="n0">
+    <edge id="e1" source="n4" target="n1">
     </edge>
-    <edge id="e2" source="n4" target="n0">
+    <edge id="e2" source="n0" target="n1">
       <data key="EH">2</data>
     </edge>
-    <edge id="e3" source="n2" target="n0">
+    <edge id="e3" source="n3" target="n1">
       <data key="EH">2</data>
     </edge>
   </graph>

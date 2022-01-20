@@ -19,7 +19,8 @@
       "rst_clk_wiz_100M": "",
       "reset_inv_0": "",
       "axi_gpio_0": "",
-      "iobuffer_0": ""
+      "iobuffer_0": "",
+      "xlconstant_0": ""
     },
     "interface_ports": {
       "led_4bits": {
@@ -340,6 +341,20 @@
         "xci_name": "SimpleSoC_iobuffer_0_0",
         "xci_path": "ip\\SimpleSoC_iobuffer_0_0\\SimpleSoC_iobuffer_0_0.xci",
         "inst_hier_path": "iobuffer_0"
+      },
+      "xlconstant_0": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "xci_name": "SimpleSoC_xlconstant_0_0",
+        "xci_path": "ip\\SimpleSoC_xlconstant_0_0\\SimpleSoC_xlconstant_0_0.xci",
+        "inst_hier_path": "xlconstant_0",
+        "parameters": {
+          "CONST_VAL": {
+            "value": "0"
+          },
+          "CONST_WIDTH": {
+            "value": "2"
+          }
+        }
       }
     },
     "interface_nets": {
@@ -476,6 +491,12 @@
         "ports": [
           "sys_clock",
           "clk_wiz/clk_in1"
+        ]
+      },
+      "xlconstant_0_dout": {
+        "ports": [
+          "xlconstant_0/dout",
+          "CORTEXM1_AXI_0/CFGITCMEN"
         ]
       }
     },
