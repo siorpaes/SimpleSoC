@@ -69,6 +69,10 @@
       },
       "SWDCLK": {
         "direction": "I"
+      },
+      "EXTRESET": {
+        "type": "rst",
+        "direction": "I"
       }
     },
     "components": {
@@ -334,6 +338,12 @@
           "CORTEXM1_AXI_0/SWCLKTCK"
         ]
       },
+      "aux_reset_in_0_1": {
+        "ports": [
+          "EXTRESET",
+          "rst_clk_wiz_100M/aux_reset_in"
+        ]
+      },
       "clk_wiz_clk_out1": {
         "ports": [
           "clk_wiz/clk_out1",
@@ -397,7 +407,7 @@
             "segments": {
               "SEG_axi_bram_ctrl_0_Mem0": {
                 "address_block": "/axi_bram_ctrl_0/S_AXI/Mem0",
-                "offset": "0xC0000000",
+                "offset": "0x00000000",
                 "range": "8K"
               },
               "SEG_axi_gpio_0_Reg": {
