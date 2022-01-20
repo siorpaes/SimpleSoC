@@ -338,7 +338,7 @@
               <MiscControls></MiscControls>
               <Define></Define>
               <Undefine></Undefine>
-              <IncludePath></IncludePath>
+              <IncludePath>.\CMSIS\Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

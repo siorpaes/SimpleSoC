@@ -1,4 +1,6 @@
 #include <stdint.h>
+#include "simplesoc.h"
+
 
 void SystemInit(void)
 {
@@ -10,6 +12,8 @@ void delay(void)
 {
 	volatile unsigned int i = 100000;
 	while(i--);
+	__SEV();
+	__NOP();
 }
 
 int main(void)
