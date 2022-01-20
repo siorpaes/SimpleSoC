@@ -1,0 +1,303 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7a35ticsg324-1L",
+      "gen_directory": "../../../../SimpleSoC.gen/sources_1/bd/SimpleSoC",
+      "name": "SimpleSoC",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2021.1"
+    },
+    "design_tree": {
+      "CORTEXM1_AXI_0": "",
+      "axi_bram_ctrl_0": "",
+      "axi_bram_ctrl_0_bram": "",
+      "axi_smc": "",
+      "clk_wiz": "",
+      "rst_clk_wiz_100M": "",
+      "reset_inv_0": ""
+    },
+    "ports": {
+      "sys_clock": {
+        "type": "clk",
+        "direction": "I",
+        "parameters": {
+          "FREQ_HZ": {
+            "value": "100000000"
+          },
+          "PHASE": {
+            "value": "0.0"
+          }
+        }
+      },
+      "reset": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      },
+      "reset_0": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "POLARITY": {
+            "value": "ACTIVE_LOW"
+          }
+        }
+      }
+    },
+    "components": {
+      "CORTEXM1_AXI_0": {
+        "vlnv": "arm.com:CortexM:CORTEXM1_AXI:1.1",
+        "xci_name": "SimpleSoC_CORTEXM1_AXI_0_0",
+        "xci_path": "ip\\SimpleSoC_CORTEXM1_AXI_0_0\\SimpleSoC_CORTEXM1_AXI_0_0.xci",
+        "inst_hier_path": "CORTEXM1_AXI_0",
+        "interface_ports": {
+          "CM1_AXI3": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "CM1_AXI3",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xDFFFFFFF",
+              "width": "32"
+            },
+            "parameters": {
+              "master_id": {
+                "value": "1"
+              }
+            }
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "CM1_AXI3": {
+              "range": "4G",
+              "width": "32",
+              "local_memory_map": {
+                "name": "CM1_AXI3",
+                "description": "Address Space Segments",
+                "address_blocks": {
+                  "CM1_AXI3:Peripheral": {
+                    "name": "CM1_AXI3:Peripheral",
+                    "display_name": "Peripherals",
+                    "base_address": "0x40000000",
+                    "range": "512M",
+                    "width": "31",
+                    "usage": "register"
+                  },
+                  "CM1_AXI3:SRAM": {
+                    "name": "CM1_AXI3:SRAM",
+                    "display_name": "SRAM",
+                    "base_address": "0x60000000",
+                    "range": "1G",
+                    "width": "32",
+                    "usage": "register"
+                  },
+                  "CM1_AXI3:External_Device": {
+                    "name": "CM1_AXI3:External_Device",
+                    "display_name": "External Device",
+                    "base_address": "0xA0000000",
+                    "range": "1G",
+                    "width": "32",
+                    "usage": "register"
+                  },
+                  "CM1_AXI3:XIP": {
+                    "name": "CM1_AXI3:XIP",
+                    "display_name": "QSPI XIP",
+                    "base_address": "0x00000000",
+                    "range": "1M",
+                    "width": "20",
+                    "usage": "register"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "axi_bram_ctrl_0": {
+        "vlnv": "xilinx.com:ip:axi_bram_ctrl:4.1",
+        "xci_name": "SimpleSoC_axi_bram_ctrl_0_0",
+        "xci_path": "ip\\SimpleSoC_axi_bram_ctrl_0_0\\SimpleSoC_axi_bram_ctrl_0_0.xci",
+        "inst_hier_path": "axi_bram_ctrl_0"
+      },
+      "axi_bram_ctrl_0_bram": {
+        "vlnv": "xilinx.com:ip:blk_mem_gen:8.4",
+        "xci_name": "SimpleSoC_axi_bram_ctrl_0_bram_0",
+        "xci_path": "ip\\SimpleSoC_axi_bram_ctrl_0_bram_0\\SimpleSoC_axi_bram_ctrl_0_bram_0.xci",
+        "inst_hier_path": "axi_bram_ctrl_0_bram",
+        "parameters": {
+          "Memory_Type": {
+            "value": "True_Dual_Port_RAM"
+          }
+        }
+      },
+      "axi_smc": {
+        "vlnv": "xilinx.com:ip:smartconnect:1.0",
+        "xci_name": "SimpleSoC_axi_smc_0",
+        "xci_path": "ip\\SimpleSoC_axi_smc_0\\SimpleSoC_axi_smc_0.xci",
+        "inst_hier_path": "axi_smc",
+        "parameters": {
+          "NUM_SI": {
+            "value": "1"
+          }
+        },
+        "interface_ports": {
+          "S00_AXI": {
+            "mode": "Slave",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "bridges": [
+              "M00_AXI"
+            ]
+          },
+          "M00_AXI": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          }
+        }
+      },
+      "clk_wiz": {
+        "vlnv": "xilinx.com:ip:clk_wiz:6.0",
+        "xci_name": "SimpleSoC_clk_wiz_0",
+        "xci_path": "ip\\SimpleSoC_clk_wiz_0\\SimpleSoC_clk_wiz_0.xci",
+        "inst_hier_path": "clk_wiz",
+        "parameters": {
+          "CLK_IN1_BOARD_INTERFACE": {
+            "value": "sys_clock"
+          },
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "rst_clk_wiz_100M": {
+        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
+        "xci_name": "SimpleSoC_rst_clk_wiz_100M_0",
+        "xci_path": "ip\\SimpleSoC_rst_clk_wiz_100M_0\\SimpleSoC_rst_clk_wiz_100M_0.xci",
+        "inst_hier_path": "rst_clk_wiz_100M",
+        "parameters": {
+          "RESET_BOARD_INTERFACE": {
+            "value": "reset"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "reset_inv_0": {
+        "vlnv": "xilinx.com:ip:util_vector_logic:2.0",
+        "xci_name": "SimpleSoC_reset_inv_0_0",
+        "xci_path": "ip\\SimpleSoC_reset_inv_0_0\\SimpleSoC_reset_inv_0_0.xci",
+        "inst_hier_path": "reset_inv_0",
+        "parameters": {
+          "C_OPERATION": {
+            "value": "not"
+          },
+          "C_SIZE": {
+            "value": "1"
+          }
+        }
+      }
+    },
+    "interface_nets": {
+      "CORTEXM1_AXI_0_CM1_AXI3": {
+        "interface_ports": [
+          "CORTEXM1_AXI_0/CM1_AXI3",
+          "axi_smc/S00_AXI"
+        ]
+      },
+      "axi_bram_ctrl_0_BRAM_PORTA": {
+        "interface_ports": [
+          "axi_bram_ctrl_0_bram/BRAM_PORTA",
+          "axi_bram_ctrl_0/BRAM_PORTA"
+        ]
+      },
+      "axi_bram_ctrl_0_BRAM_PORTB": {
+        "interface_ports": [
+          "axi_bram_ctrl_0_bram/BRAM_PORTB",
+          "axi_bram_ctrl_0/BRAM_PORTB"
+        ]
+      },
+      "axi_smc_M00_AXI": {
+        "interface_ports": [
+          "axi_smc/M00_AXI",
+          "axi_bram_ctrl_0/S_AXI"
+        ]
+      }
+    },
+    "nets": {
+      "clk_wiz_clk_out1": {
+        "ports": [
+          "clk_wiz/clk_out1",
+          "CORTEXM1_AXI_0/HCLK",
+          "axi_smc/aclk",
+          "rst_clk_wiz_100M/slowest_sync_clk",
+          "axi_bram_ctrl_0/s_axi_aclk"
+        ]
+      },
+      "clk_wiz_locked": {
+        "ports": [
+          "clk_wiz/locked",
+          "rst_clk_wiz_100M/dcm_locked"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_0",
+          "rst_clk_wiz_100M/ext_reset_in"
+        ]
+      },
+      "reset_1": {
+        "ports": [
+          "reset",
+          "reset_inv_0/Op1"
+        ]
+      },
+      "reset_inv_0_Res": {
+        "ports": [
+          "reset_inv_0/Res",
+          "clk_wiz/reset"
+        ]
+      },
+      "rst_clk_wiz_100M_peripheral_aresetn": {
+        "ports": [
+          "rst_clk_wiz_100M/peripheral_aresetn",
+          "CORTEXM1_AXI_0/SYSRESETn",
+          "axi_bram_ctrl_0/s_axi_aresetn",
+          "axi_smc/aresetn"
+        ]
+      },
+      "sys_clock_1": {
+        "ports": [
+          "sys_clock",
+          "clk_wiz/clk_in1"
+        ]
+      }
+    },
+    "addressing": {
+      "/CORTEXM1_AXI_0": {
+        "address_spaces": {
+          "CM1_AXI3": {
+            "segments": {
+              "SEG_axi_bram_ctrl_0_Mem0": {
+                "address_block": "/axi_bram_ctrl_0/S_AXI/Mem0",
+                "offset": "0xC0000000",
+                "range": "8K"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
