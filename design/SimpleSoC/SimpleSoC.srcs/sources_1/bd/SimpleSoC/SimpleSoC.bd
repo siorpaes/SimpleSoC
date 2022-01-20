@@ -7,8 +7,7 @@
       "name": "SimpleSoC",
       "rev_ctrl_bd_flag": "RevCtrlBdOff",
       "synth_flow_mode": "Hierarchical",
-      "tool_version": "2021.1",
-      "validated": "true"
+      "tool_version": "2021.1"
     },
     "design_tree": {
       "CORTEXM1_AXI_0": "",
@@ -17,58 +16,59 @@
       "axi_smc": "",
       "clk_wiz": "",
       "rst_clk_wiz_100M": "",
-      "reset_inv_0": ""
+      "reset_inv_0": "",
+      "axi_gpio_0": "",
+      "iobuffer_0": ""
+    },
+    "interface_ports": {
+      "led_4bits": {
+        "mode": "Master",
+        "vlnv_bus_definition": "xilinx.com:interface:gpio:1.0",
+        "vlnv": "xilinx.com:interface:gpio_rtl:1.0"
+      }
     },
     "ports": {
       "sys_clock": {
         "type": "clk",
         "direction": "I",
         "parameters": {
-          "CLK_DOMAIN": {
-            "value": "SimpleSoC_sys_clock",
-            "value_src": "default"
-          },
           "FREQ_HZ": {
             "value": "100000000"
-          },
-          "FREQ_TOLERANCE_HZ": {
-            "value": "0",
-            "value_src": "default"
-          },
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
           },
           "PHASE": {
             "value": "0.0"
           }
         }
       },
-      "reset": {
+      "CLKRESET": {
         "type": "rst",
         "direction": "I",
         "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
           "POLARITY": {
             "value": "ACTIVE_LOW"
           }
         }
       },
-      "reset_0": {
+      "RESET": {
         "type": "rst",
         "direction": "I",
         "parameters": {
-          "INSERT_VIP": {
-            "value": "0",
-            "value_src": "default"
-          },
           "POLARITY": {
             "value": "ACTIVE_LOW"
           }
         }
+      },
+      "LOCKUP": {
+        "direction": "O"
+      },
+      "HALTED": {
+        "direction": "O"
+      },
+      "SWDIO": {
+        "direction": "IO"
+      },
+      "SWDCLK": {
+        "direction": "I"
       }
     },
     "components": {
@@ -164,6 +164,9 @@
         "xci_path": "ip\\SimpleSoC_axi_smc_0\\SimpleSoC_axi_smc_0.xci",
         "inst_hier_path": "axi_smc",
         "parameters": {
+          "NUM_MI": {
+            "value": "2"
+          },
           "NUM_SI": {
             "value": "1"
           }
@@ -173,42 +176,20 @@
             "mode": "Slave",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
             "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "parameters": {
-              "NUM_READ_OUTSTANDING": {
-                "value": "2"
-              },
-              "NUM_WRITE_OUTSTANDING": {
-                "value": "2"
-              }
-            },
             "bridges": [
-              "M00_AXI"
+              "M00_AXI",
+              "M01_AXI"
             ]
           },
           "M00_AXI": {
             "mode": "Master",
             "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
-            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
-            "parameters": {
-              "MAX_BURST_LENGTH": {
-                "value": "16"
-              },
-              "NUM_READ_OUTSTANDING": {
-                "value": "2"
-              },
-              "NUM_WRITE_OUTSTANDING": {
-                "value": "2"
-              },
-              "RUSER_BITS_PER_BYTE": {
-                "value": "0"
-              },
-              "SUPPORTS_NARROW_BURST": {
-                "value": "0"
-              },
-              "WUSER_BITS_PER_BYTE": {
-                "value": "0"
-              }
-            }
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
+          },
+          "M01_AXI": {
+            "mode": "Master",
+            "vlnv_bus_definition": "xilinx.com:interface:aximm:1.0",
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0"
           }
         }
       },
@@ -256,6 +237,26 @@
             "value": "1"
           }
         }
+      },
+      "axi_gpio_0": {
+        "vlnv": "xilinx.com:ip:axi_gpio:2.0",
+        "xci_name": "SimpleSoC_axi_gpio_0_0",
+        "xci_path": "ip\\SimpleSoC_axi_gpio_0_0\\SimpleSoC_axi_gpio_0_0.xci",
+        "inst_hier_path": "axi_gpio_0",
+        "parameters": {
+          "GPIO_BOARD_INTERFACE": {
+            "value": "led_4bits"
+          },
+          "USE_BOARD_FLOW": {
+            "value": "true"
+          }
+        }
+      },
+      "iobuffer_0": {
+        "vlnv": "st.com:user:iobuffer:1.0",
+        "xci_name": "SimpleSoC_iobuffer_0_0",
+        "xci_path": "ip\\SimpleSoC_iobuffer_0_0\\SimpleSoC_iobuffer_0_0.xci",
+        "inst_hier_path": "iobuffer_0"
       }
     },
     "interface_nets": {
@@ -277,21 +278,70 @@
           "axi_bram_ctrl_0/BRAM_PORTB"
         ]
       },
+      "axi_gpio_0_GPIO": {
+        "interface_ports": [
+          "led_4bits",
+          "axi_gpio_0/GPIO"
+        ]
+      },
       "axi_smc_M00_AXI": {
         "interface_ports": [
           "axi_smc/M00_AXI",
           "axi_bram_ctrl_0/S_AXI"
         ]
+      },
+      "axi_smc_M01_AXI": {
+        "interface_ports": [
+          "axi_smc/M01_AXI",
+          "axi_gpio_0/S_AXI"
+        ]
       }
     },
     "nets": {
+      "CORTEXM1_AXI_0_HALTED": {
+        "ports": [
+          "CORTEXM1_AXI_0/HALTED",
+          "HALTED"
+        ]
+      },
+      "CORTEXM1_AXI_0_LOCKUP": {
+        "ports": [
+          "CORTEXM1_AXI_0/LOCKUP",
+          "LOCKUP"
+        ]
+      },
+      "CORTEXM1_AXI_0_SWDO": {
+        "ports": [
+          "CORTEXM1_AXI_0/SWDO",
+          "iobuffer_0/buf_in"
+        ]
+      },
+      "CORTEXM1_AXI_0_SWDOEN": {
+        "ports": [
+          "CORTEXM1_AXI_0/SWDOEN",
+          "iobuffer_0/buf_en"
+        ]
+      },
+      "Net": {
+        "ports": [
+          "SWDIO",
+          "iobuffer_0/buf_inout"
+        ]
+      },
+      "SWCLKTCK_0_1": {
+        "ports": [
+          "SWDCLK",
+          "CORTEXM1_AXI_0/SWCLKTCK"
+        ]
+      },
       "clk_wiz_clk_out1": {
         "ports": [
           "clk_wiz/clk_out1",
           "CORTEXM1_AXI_0/HCLK",
           "axi_smc/aclk",
           "rst_clk_wiz_100M/slowest_sync_clk",
-          "axi_bram_ctrl_0/s_axi_aclk"
+          "axi_bram_ctrl_0/s_axi_aclk",
+          "axi_gpio_0/s_axi_aclk"
         ]
       },
       "clk_wiz_locked": {
@@ -300,15 +350,21 @@
           "rst_clk_wiz_100M/dcm_locked"
         ]
       },
+      "iobuffer_0_buf_out": {
+        "ports": [
+          "iobuffer_0/buf_out",
+          "CORTEXM1_AXI_0/SWDITMS"
+        ]
+      },
       "reset_0_1": {
         "ports": [
-          "reset_0",
+          "RESET",
           "rst_clk_wiz_100M/ext_reset_in"
         ]
       },
       "reset_1": {
         "ports": [
-          "reset",
+          "CLKRESET",
           "reset_inv_0/Op1"
         ]
       },
@@ -323,7 +379,8 @@
           "rst_clk_wiz_100M/peripheral_aresetn",
           "CORTEXM1_AXI_0/SYSRESETn",
           "axi_bram_ctrl_0/s_axi_aresetn",
-          "axi_smc/aresetn"
+          "axi_smc/aresetn",
+          "axi_gpio_0/s_axi_aresetn"
         ]
       },
       "sys_clock_1": {
@@ -342,6 +399,11 @@
                 "address_block": "/axi_bram_ctrl_0/S_AXI/Mem0",
                 "offset": "0xC0000000",
                 "range": "8K"
+              },
+              "SEG_axi_gpio_0_Reg": {
+                "address_block": "/axi_gpio_0/S_AXI/Reg",
+                "offset": "0x40000000",
+                "range": "64K"
               }
             }
           }
