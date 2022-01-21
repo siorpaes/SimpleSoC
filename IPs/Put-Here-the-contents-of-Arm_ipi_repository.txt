@@ -1,0 +1,5 @@
+Put Here the contents of Arm_ipi_repository.
+Should contain the followinf directories:
+
+CM1DbgAXI
+DAPLink_to_Arty_shield
