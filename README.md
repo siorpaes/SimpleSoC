@@ -19,7 +19,7 @@ Selecting the ‘Board’ tab it is possible to add the board resources to the b
 
 With the help of the connection wizard, something similar should appear:
 
-![SimpleSoc Block Diagram](/images/block-diagram.png)
+![SimpleSoc Block Diagram](/images/block-diagram.PNG)
 
 Before building, a TOP level module must be specified. Right-click the top level design where all blocks are belonging to and select “Create HDLwrapper”. Now you can run design synthesis.
 Remember to add proper constraints file to map the top signals to the correct IOs. Template files for all Digilent boards can be found here https://github.com/Digilent/digilent-xdc
