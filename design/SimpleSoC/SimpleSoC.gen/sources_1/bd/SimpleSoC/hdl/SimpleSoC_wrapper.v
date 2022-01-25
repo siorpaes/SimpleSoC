@@ -1,7 +1,7 @@
 //Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2021.1 (win64) Build 3247384 Thu Jun 10 19:36:33 MDT 2021
-//Date        : Thu Jan 20 15:16:39 2022
+//Date        : Tue Jan 25 17:48:33 2022
 //Host        : AGRCWD8123 running 64-bit major release  (build 9200)
 //Command     : generate_target SimpleSoC_wrapper.bd
 //Design      : SimpleSoC_wrapper
